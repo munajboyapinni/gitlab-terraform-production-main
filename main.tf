@@ -35,7 +35,7 @@ resource "aws_instance" "gitlab_server" {
   ami           = "ami-0443305dabd4be2bc"
   instance_type = "t2.medium"
   key_name = var.generated_key_name
-  subnet_id = "subnet-041f647d50d7b732b"
+  subnet_id = "subnet-0e45020447775dc7e"
   tags = {
     Name = var.instance_name
     Owner = var.ownerTag
@@ -47,7 +47,7 @@ resource "aws_instance" "gitlab_server" {
 resource "aws_security_group" "gitlab_security_group" {
   name = "Gitlab Security Group"
   description = "Gitlab Security Group"
-  vpc_id      = "vpc-08734369a8e8d0341"
+  vpc_id      = "vpc-05d66555d35008729"
   ingress {
     description      = "custom port for accessing gitlab"
     from_port        = 8000  
@@ -105,7 +105,7 @@ resource "aws_s3_bucket" "log_bucket" {
 }
 
 resource "aws_s3_bucket" "gitlab_bucket" {
-  bucket = "turntabl-bucket"
+  bucket = "gitlab-bkt"
   acl    = "private"
 
   logging {
@@ -129,14 +129,6 @@ resource "aws_elb" "gitlab_elb" {
     lb_port           = 80
     lb_protocol       = "http"
   }
-
-  # listener {
-  #   instance_port      = 8000
-  #   instance_protocol  = "http"
-  #   lb_port            = 443
-  #   lb_protocol        = "https"
-  
-  # }
 
   health_check {
     healthy_threshold   = 2

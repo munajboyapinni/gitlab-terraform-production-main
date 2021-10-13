@@ -8,7 +8,7 @@ resource "aws_db_instance" "gitlab" {
   username               = var.username
   password               = var.db_password
   db_subnet_group_name   = aws_db_subnet_group.gitlab_db_subnet_group.name
-  vpc_security_group_ids = ["vpc-08734369a8e8d0341"]
+  vpc_security_group_ids = ["vpc-05d66555d35008729"]
   parameter_group_name   = aws_db_parameter_group.gitlab.name
   publicly_accessible    = true
   skip_final_snapshot    = false
@@ -19,7 +19,7 @@ resource "aws_db_instance" "gitlab" {
 }
 resource "aws_db_subnet_group" "gitlab_db_subnet_group" {
   name       = "gitlab_db_subnet_group"
-  subnet_ids = ["subnet-041f647d50d7b732b"]
+  subnet_ids = ["subnet-0e45020447775dc7e", "subnet-0a4f86f9733b8d1c4"]
 
   tags = {
     Name = "My DB subnet group"
