@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "aws" {
-  profile = "eks"
+  profile = "default"
   region  = "us-east-2"
 
 }
@@ -34,7 +34,7 @@ resource "tls_private_key" "dev_key" {
 resource "aws_instance" "gitlab_server" {
   ami           = "ami-0000280ed4ae3b00c"
   instance_type = "t2.medium"
-  key_name      = var.generated_key_name
+  key_name      = "gitlab-production-version"
   associate_public_ip_address = true
   subnet_id     = "subnet-04eaaa75a7b053324"
   tags = {
@@ -43,7 +43,6 @@ resource "aws_instance" "gitlab_server" {
   }
 
 }
-
 
 resource "aws_security_group" "gitlab_security_group" {
   name        = "Gitlab Security Group"

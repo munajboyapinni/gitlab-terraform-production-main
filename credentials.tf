@@ -1,8 +1,8 @@
-# variable "username" {
-#   default = "ttdevops"
-# }
-# variable "db_password" {
-#   description = "RDS root user password"
-#   type        = string
-#   sensitive   = true
-# }
+variable "username" {
+  default = "ttdevops"
+}
+variable "db_password" {
+  description = "RDS root user password"
+  type        = string
+  sensitive   = true
+}

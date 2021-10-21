@@ -17,7 +17,7 @@ resource "tls_private_key" "gitlab_runner_key" {
 resource "aws_instance" "gitlab_runner_server" {
   ami           = "ami-00dfe2c7ce89a450b"
   instance_type = "t2.micro"
-  key_name      = var.gitlab_runer_generated_key_name
+  key_name      = "gitlab-runner"
   subnet_id     = "subnet-04eaaa75a7b053324"
   tags = {
     Name  = "Gitlab-Runner"
