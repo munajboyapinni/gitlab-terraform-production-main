@@ -3,7 +3,11 @@ variable "instance_name" {
   type        = string
   default     = "GitlabServerInstance"
 }
-
+variable "vpc_id" {
+  description = "vpc-id"
+  type        = string
+  default     = "vpc-05d66555d35008729"
+}
 variable "generated_key_name" {
   type        = string
   default     = "GitlabServerKey"

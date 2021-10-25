@@ -19,7 +19,7 @@ resource "aws_db_instance" "gitlab" {
 }
 resource "aws_db_subnet_group" "gitlab_db_subnet_group" {
   name       = "gitlab_db_subnet_group"
-  subnet_ids = ["subnet-0c735a58768e0fcd9", "subnet-04eaaa75a7b053324"]
+  subnet_ids = ["subnet-0e45020447775dc7e", "subnet-0a4f86f9733b8d1c4"]
 
   tags = {
     Name  = "My DB subnet group"

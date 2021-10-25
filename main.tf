@@ -36,7 +36,7 @@ resource "aws_instance" "gitlab_server" {
   instance_type = "t2.medium"
   key_name      = "gitlab-production-version"
   associate_public_ip_address = true
-  subnet_id     = "subnet-04eaaa75a7b053324"
+  subnet_id     = "subnet-0e45020447775dc7e"
   tags = {
     Name  = var.instance_name
     Owner = var.ownerTag
@@ -47,7 +47,7 @@ resource "aws_instance" "gitlab_server" {
 resource "aws_security_group" "gitlab_security_group" {
   name        = "Gitlab Security Group"
   description = "Gitlab Security Group"
-  vpc_id      = "vpc-0992b6f9c990bed36"
+  vpc_id      = var.vpc_id
   ingress {
     description = "custom port for accessing gitlab"
     from_port   = 8000

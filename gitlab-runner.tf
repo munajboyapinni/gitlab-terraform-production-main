@@ -18,7 +18,7 @@ resource "aws_instance" "gitlab_runner_server" {
   ami           = "ami-00dfe2c7ce89a450b"
   instance_type = "t2.micro"
   key_name      = "gitlab-runner"
-  subnet_id     = "subnet-04eaaa75a7b053324"
+  subnet_id     = "subnet-0e45020447775dc7e"
   tags = {
     Name  = "Gitlab-Runner"
     Owner = var.ownerTag
@@ -30,7 +30,7 @@ resource "aws_instance" "gitlab_runner_server" {
 resource "aws_security_group" "gitlab_runner_security_group" {
   name        = "Gitlab runner Security Group"
   description = "Gitlab runner Security Group"
-  vpc_id      = "vpc-0992b6f9c990bed36"
+  vpc_id      = var.vpc_id
   
   ingress {
     description = "secure web connection"
