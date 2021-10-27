@@ -15,28 +15,18 @@ provider "aws" {
 
 }
 
-resource "aws_key_pair" "gitlab_server_key" {
-  key_name   = var.generated_key_name
-  public_key = tls_private_key.dev_key.public_key_openssh
 
-  provisioner "local-exec" { # Generate "terraform-key-pair.pem" in current directory
-    command = "echo '${tls_private_key.dev_key.private_key_pem}' > ./'${var.generated_key_name}'.pem"
-  }
-  tags = {
-    Owner = var.ownerTag
-  }
-}
 resource "tls_private_key" "dev_key" {
   algorithm = "RSA"
   rsa_bits  = 4096
-}
+
 
 resource "aws_instance" "gitlab_server" {
   ami           = "ami-0000280ed4ae3b00c"
   instance_type = "t2.medium"
   key_name      = "gitlab-production-version"
   associate_public_ip_address = true
-  subnet_id     = "subnet-0e45020447775dc7e"
+  subnet_id     = "subnet-04eaaa75a7b053324"
   tags = {
     Name  = var.instance_name
     Owner = var.ownerTag

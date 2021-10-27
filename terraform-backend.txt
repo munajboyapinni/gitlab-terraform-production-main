@@ -1,0 +1,8 @@
+terraform {
+  backend "s3" {
+    profile = "default"
+    bucket = "gitlab-log-bkt"
+    key    = "ttdeveops/gitlab/terraform.tfstate"
+    region = "us-east-2"
+  }
+}

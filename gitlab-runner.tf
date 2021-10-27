@@ -1,14 +1,4 @@
-resource "aws_key_pair" "gitlab_runner_server_key" {
-  key_name   = var.gitlab_runer_generated_key_name
-  public_key = tls_private_key.dev_key.public_key_openssh
 
-  provisioner "local-exec" { # Generate "terraform-key-pair.pem" in current directory
-    command = "echo '${tls_private_key.dev_key.private_key_pem}' > ./'${var.gitlab_runer_generated_key_name}'.pem"
-  }
-  tags = {
-    Owner = var.ownerTag
-  }
-}
 resource "tls_private_key" "gitlab_runner_key" {
   algorithm = "RSA"
   rsa_bits  = 4096
